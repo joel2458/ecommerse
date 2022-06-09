@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>Klean - Cleaning Services Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" enctype="multipart/form-data">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        
+        
+        </style>
+
+</head>
+
+<body style="background-image: url(https://img.freepik.com/free-photo/online-shopping-concept-web-mobile-application-ecommerce-top-view-smartphone-with-carton-paper-box-with-shopping-cart-blue-background-3d-rendering_20693-786.jpg);">
+<div class="container-fluid">
+    <div class="row bg-info">
+        <div class="col-lg-2 bg-imfo d-none d-lg-block">
+            <a href="" class="navbar-brand w-80 h-80 m-0 p-0 d-flex align-items-center justify-content-center">
+                <img src="{% static 'image/logoshop.jpg' %}" class="rounded-circle" width="60" height="60"  >
+                <h1 class="m-2 display-6 text-dark">SHOP</h1>
+            </a>
+        </div>
+        <div class="col-lg-10 bg-info">
+           
+            <nav class="navbar navbar-expand-lg bg-info navbar-light p-0">
+                <a href="" class="navbar-brand d-block d-lg-none ">
+                    
+                    <h1 class="m-0 display-4 text-primary ">SHOP</h1>
+                </a>
+      <a href="/" class="nav-item nav-link active text-light">Home</a>
+                            <a href="" class="nav-item nav-link text-light">profile</a>
+                            <a href="{% url 'cart' %}" class="nav-item nav-link text-light">cart</a>
+                            <a href="{% url 'show_profile' %}" class="nav-item nav-link text-light">profile</a>
+                           
+                            <a href="{% url 'logout' %}" class="nav-item nav-link text-light">logout</a>
+                            
+                                </form>
+                                </nav>
+                                </div>
+                                </div>
+                                </div>
+                                
+
+
+
+
+
+                  <section class="bg-light">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 mb-4 mb-sm-5">
+                                <div class="card card-style1 border-0">
+                                    <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                                {% for u in user %}
+
+                                                {% if u.user_image == '/static/image/defaultimg.png' %}
+                                                
+                                                    <img src="{% static 'image/defaultimg.png' %}" style="width:300px;height:300px" class="float-left">
+                                                
+                                                {% else %}
+                                                
+                                                    <img src="{{ u.user_image.url }}" style="width:300px;height:300px" class="float-left" >
+                                                
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-lg-6 px-xl-10">
+                                                <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                                    <h3 class="h2 text-white mb-0">{{ u.user.first_name }} {{ u.user.last_name }}</h3>
+                                                    
+                                                </div>
+                                                <ul class="list-unstyled mb-1-9">
+                                                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Address:</span> {{ u.user_address }}</li>
+                                                    
+                                                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Email:</span>{{ u.user.email }} </li>
+                                                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Phone:</span> {{ u.phone }}</li>
+                                                    
+                                                </ul>
+                                                {% endfor%}
+                                                <a  class="fas fa-edit text-dark" role="button" href="{% url 'user_edit_profile' %}">EDIT</a>  
+                    
+                                                <button class="btn bg-warning"><a href="{% url 'homepage' %}"  style="margin-left: 10%;">back</a></button> 
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+
+
+
+
+                  
+                  <style>
+                     
+.card-style1 {
+    box-shadow: 0px 0px 10px 0px rgb(89 75 128 / 9%);
+}
+.border-0 {
+    border: 0!important;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+section {
+    padding: 60px 0;
+    overflow: hidden;
+    background: #fff;
+}
+.mb-2-3, .my-2-3 {
+    margin-bottom: 2.3rem;
+}
+
+
+
+.text-primary {
+    color: #ceaa4d !important;
+}
+.text-secondary {
+    color: #15395A !important;
+}
+.font-weight-600 {
+    font-weight: 600;
+}
+.display-26 {
+    font-size: 1.3rem;
+}
+
+@media screen and (min-width: 992px){
+    .p-lg-7 {
+        padding: 4rem;
+    }
+}
+@media screen and (min-width: 768px){
+    .p-md-6 {
+        padding: 3.5rem;
+    }
+}
+@media screen and (min-width: 576px){
+    .p-sm-2-3 {
+        padding: 2.3rem;
+    }
+}
+.p-1-9 {
+    padding: 1.9rem;
+}
+
+.bg-secondary {
+    background: #15395A !important;
+}
+@media screen and (min-width: 576px){
+    .pe-sm-6, .px-sm-6 {
+        padding-right: 3.5rem;
+    }
+}
+@media screen and (min-width: 576px){
+    .ps-sm-6, .px-sm-6 {
+        padding-left: 3.5rem;
+    }
+}
+.pe-1-9, .px-1-9 {
+    padding-right: 1.9rem;
+}
+.ps-1-9, .px-1-9 {
+    padding-left: 1.9rem;
+}
+.pb-1-9, .py-1-9 {
+    padding-bottom: 1.9rem;
+}
+.pt-1-9, .py-1-9 {
+    padding-top: 1.9rem;
+}
+.mb-1-9, .my-1-9 {
+    margin-bottom: 1.9rem;
+}
+@media (min-width: 992px){
+    .d-lg-inline-block {
+        display: inline-block!important;
+    }
+}
+.rounded {
+    border-radius: 0.25rem!important;
+}
+
+
+                        </style>
+            
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

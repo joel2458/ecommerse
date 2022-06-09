@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+    <div  class="row justify-content-center align-items-center " enctype="multipart/form-data">
+        <div class="col-md-9 my-5 " style="background-color:rgba(48, 36, 116, 0.527);box-shadow: 3px 10px 30px rgb(52, 80, 61);">
+            <div class="col-md-12">
+                <h4>edit your profile</h4>
+                    </div>
+
+                    <form class="form" action="" method="post" enctype="multipart/form-data">
+                      
+                        {% csrf_token %}
+                    <label class="text-light">Enter First Name:</label>
+                    <input type="text" name="fname" class="form-control mt-3 " value="{{umember.user.first_name}}">
+                    <label class="text-light">Enter last Name:</label>
+                    <input type="text" name="lname" class="form-control mt-3 " value="{{ umember.user.last_name }}">
+                    <label class="text-light">Enter Userame:</label>
+                    <input type="text" name="uname" class="form-control mt-3 " value="{{ umember.user.username }}">
+                    <label class="text-light">Enter email:</label>
+                    <input type="email" name="email" class="form-control mt-3 " value="{{ umember.user.email }}">
+                    <label class="text-light">Enter address:</label>
+                    <input type="text" name="add" class="form-control mt-3 " value="{{ umember.user_address }}">
+                    <label class="text-light">gender:</label>
+                    <input  type="radio" id="male" name="gender" value="{{ umember.user_gender }}">
+                    <label class="text-warning" for="male">Male</label>
+                    <input  type="radio" id="female" name="gender" value="{{ umember.user_gender }}">
+                    <label class="text-warning" for="female">Female</label>
+                    <input  type="radio" id="others" name="gender" value="{{ umember.user_gender }}">
+                    <label class="text-warning" for="othersr">others</label><br>
+                    <label class="text-light">phone number:</label>
+                    <input type="text" name="phn" class="form-control mt-3 " value="{{ umember.phone }}">
+                    <label class="text-light">pincode:</label>
+                    <input type="text" name="pin" class="form-control mt-3 " value="{{ umember.pincode }}">
+                    <label class="text-light">Image:</label>
+                    
+                    <p>
+                        {% if umember.user_image == '/static/image/defaultimg.png' %}
+                            <td>
+                                <img src="{% static 'image/defaultimg.png' %}" class="w-25">
+                            </td>
+                            {% else %}
+                            <td>
+                                <img src="{{ umember.user_image.url }}" class="w-25">
+                            </td>
+                            
+                    </p>
+                    
+                    {% endif %}
+                    <input type="file" name="file" class="form-control mt-3" accept="image/*" >
+                    <button type="submit" class="btn btn-success rounded-pill w-30 mt-3 w-40">SAVE</button>
+                    </form><br>
+
+                    <button class="btn bg-warning float-right"><a href="{% url 'show_profile' %}"  style="margin-left: 10%;">back</a></button>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

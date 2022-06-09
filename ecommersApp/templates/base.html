@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>Klean - Cleaning Services Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" enctype="multipart/form-data">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        
+        
+        </style>
+
+</head>
+
+<body>
+    <!-- Header Start -->
+    <div class="container-fluid ">
+        <div class="row bg-info">
+            <div class="col-lg-2 bg-info d-none d-lg-block">
+                <a href="" class="navbar-brand w-80 h-80 m-0 p-0 d-flex align-items-center justify-content-center">
+                    <img src="{% static 'image/logoshop.jpg' %}" class="rounded-circle" width="60" height="60"  >
+                    <h1 class="m-2 display-6 text-dark">SHOP</h1>
+                </a>
+            </div>
+            <div class="col-lg-10 bg-info">
+               
+                <nav class="navbar navbar-expand-lg bg-info navbar-light p-0">
+                    <a href="" class="navbar-brand d-block d-lg-none ">
+                        
+                        <h1 class="m-0 display-4 text-primary ">SHOP</h1>
+                    </a> 
+                  
+                    
+                        <div class=" navbar-nav mr-auto py-0 ">
+                            {% if user.is_staff %}
+                            <a href="/" class="nav-item nav-link active">Home</a>
+                            <a href="" class="nav-item nav-link text-danger">About</a>
+                            <a href="{% url 'show_user_details' %}" class="nav-item nav-link">show user</a>
+                            <a href="{% url 'load_add_category' %}" class="nav-item nav-link">add catogory</a>
+                            
+                            <a href="{% url 'load_admin_add_product' %}" class="nav-item nav-link" >add_product</a>
+                            <a href="{% url 'admin_show_product' %}" class="nav-item nav-link" >show_product</a>
+                                
+                           
+                            <a href="{% url 'logout' %}" class="nav-item nav-link">logout</a>
+                            <form class="form-inline float-right">
+                                <input class="form-control mr-sm-2" type="text" placeholder="search products">
+                                <button class="btn btn-success" type="submit">Search</button>
+                                </form>
+                                {% elif user.is_authenticated %}
+                                <a href="/" class="nav-item nav-link active">Home</a>
+                            <a href="" class="nav-item nav-link text-danger">About</a>
+                            <a href="{% url 'cart' %}" class="nav-item nav-link">cart</a>
+                            <a href="{% url 'show_profile' %}" class="nav-item nav-link">profile</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                <div class="dropdown-menu rounded-0 m-0 bg-info">
+                                    <a href="blog.html" class="dropdown-item">Latest Blog</a>
+                                    <a href="single.html" class="dropdown-item">Blog Detail</a>
+                                </div>
+                            </div>
+                            <a href="{% url 'logout' %}" class="nav-item nav-link">logout</a>
+                            <form class="form-inline float-right">
+                                <input class="form-control mr-sm-2" type="text" name="q" placeholder="search products">
+                                <button class="btn btn-success" type="submit">Search</button>
+                                </form>
+
+                                {% else %}
+
+
+                                <a href="/" class="nav-item nav-link active">Home</a>
+                                <a href="about.html" class="nav-item nav-link">About</a>
+                                <a href="{% url 'load_user_signup' %}" class="nav-item nav-link">Signup</a>
+                                <a href="{% url 'load_user_login' %}" class="nav-item nav-link">login</a>
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                    <div class="dropdown-menu rounded-0 m-0 bg-info">
+                                        <a href="blog.html" class="dropdown-item">Latest Blog</a>
+                                        <a href="single.html" class="dropdown-item">Blog Detail</a>
+                                    </div>
+                                </div>
+                                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                                <form class="form-inline float-right">
+                                    <input class="form-control mr-sm-2" type="text" placeholder="search products">
+                                    <button class="btn btn-success" type="submit">Search</button>
+
+                                   
+                              </form> 
+                              {% endif %}
+
+                        </div>
+                 
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+
+                   
+{% block content%}
+
+
+
+{% endblock %}
+                
+
+
+
+          
+            </body>
+            </html>
+    <!-- Header End -->
+
+
+
+
+
+
+
+    

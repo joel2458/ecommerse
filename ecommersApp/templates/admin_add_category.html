@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<body style="background-image: url(https://media.istockphoto.com/photos/blank-screen-white-cellphone-and-shopping-carts-on-pastel-pink-and-picture-id1153303034?k=20&m=1153303034&s=612x612&w=0&h=_9tH8mA_d9HSlhFnEwN5c81M4-cu5ncNqbDazG6n4oI=);">
+<section>
+    <div class="container">
+        <div  class="row justify-content-center align-items-center">
+            <div class="a col-md-8  my-5"  style="background-color:rgba(136, 184, 82, 0.808); box-shadow: 3px 10px 18px blue;">
+<div class="container-fluid">
+ <div class="container" >
+    <h1>add category</h1></div>
+
+    <form action="{% url 'add_category' %}" method="post" class="form pt-5 pb-5" style="width: 50%; margin-left:25%">
+        {% csrf_token %}
+ 
+        <!-- <input type="number" name="csno" class="form-control" placeholder="Course Number"><br> -->
+        <input type="text" name="category" class="form-control" placeholder="enter category"><br>
+        
+        
+
+        <button type="submit" class="btn btn-outline-info" style="margin-left: 40%;">Submit</button>
+        
+    </form>
+    <button class="btn bg-warning float-right"><a href="{% url 'admin_show_product' %}"  style="margin-left: 10%;">back</a></button>
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+{% endblock %}

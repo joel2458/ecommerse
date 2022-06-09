@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<body style="background-image: url(https://media.istockphoto.com/photos/blank-screen-white-cellphone-and-shopping-carts-on-pastel-pink-and-picture-id1153303034?k=20&m=1153303034&s=612x612&w=0&h=_9tH8mA_d9HSlhFnEwN5c81M4-cu5ncNqbDazG6n4oI=);">
+<div class="container">
+    
+        <div class="alighnm">
+            {% for message in messages %}
+            <h5>
+                <div class="alert alert-danger mt-5" style="width: 50%;">
+                    {{ message }}
+                </div>
+            </h5>
+                {% endfor %}
+            </div>
+       
+ 
+    </div>
+    <div  class="row justify-content-center align-items-center " enctype="multipart/form-data">
+        <div class="col-md-9 my-5 " style="background-color:rgba(25, 125, 155, 0.827);box-shadow: 3px 10px 30px rgb(52, 80, 61);">
+            <div class="col-md-12">
+                <form class="form" action="{% url 'user_signup' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h3 class="text-center text-warning">Register</h3>
+                        <div class="row">
+                            <div class="col">
+                                <label  class="text-warning">First Name</label>
+                                <input type="text" name="fname" class="form-control">
+                                </div>
+                            <div class="col">
+                                <label  class="text-warning">Last Name</label><br>
+                                <input type="text" name="lname" class="form-control">
+                                </div>
+                                </div>
+                        <div class="row">
+                            <div class="col">
+                                <label  class="text-warning">User Name</label>
+                                <input type="text" name="uname" class="form-control">
+                                </div>
+                            <div class="col">
+                                <label  class="text-warning">Email</label><br>
+                                <input type="email" name="email" class="form-control">  
+                                </div></div>
+                        <div class="row">
+                            <div class="col">                        
+                                <label class="text-warning">Confirm Email</label>
+                                <input type="email" name="cemail"  class="form-control">
+                                </div>
+                            <div class="col">
+                                <label class="text-warning">Password</label><br>
+                                <input type="password" name="password"  class="form-control">
+                                </div></div>
+                        <div class="row">
+                            <div class="col">        
+                                <label class="text-warning">Confirm Password</label>
+                                <input type="password" name="cpass"  class="form-control">
+                                </div>
+                            <div class="col">
+                                <label class="text-warning">Address</label><br>
+                                <input type="text" name="add"  class="form-control">
+                                </div>
+                                </div>
+                        <div class="row">
+                            <div class="col">
+
+                                <label class="text-warning">Gender:</label>
+                                <input  type="radio" id="male" name="gender" value="male">
+                                <label class="text-warning" for="male">Male</label>
+                                <input  type="radio" id="female" name="gender" value="female">
+                                <label class="text-warning" for="female">Female</label>
+                                <input  type="radio" id="others" name="gender" value="others">
+                                <label class="text-warning" for="othersr">others</label>
+                                </div>
+                            <div class="col">
+                        <input type="file" name="file" class="form-control mt-3" accept="image/*">
+                        </div></div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="text-warning">phone</label><br>
+                                <input type="text" name="phn"  class="form-control">
+                                </div>
+                                <div class="col">
+                                    <label class="text-warning">pincode</label><br>
+                                    <input type="text" name="pin"  class="form-control">
+                                    </div></div>
+                    
+                        <button type="submit" class="btn btn-success my-3" style="margin-left: 40%;">singup</button>
+                  
+                    <div  class="text-right">
+                        <a href="" class="text-warning">Login here</a><br>
+                        <a href="" class="text-warning">Back To Home</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
+
+
+{% endblock %}

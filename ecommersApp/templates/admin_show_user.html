@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>Klean - Cleaning Services Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" enctype="multipart/form-data">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        
+        
+        </style>
+
+</head>
+
+<body style="background-image: url(https://media.istockphoto.com/photos/blank-screen-white-cellphone-and-shopping-carts-on-pastel-pink-and-picture-id1153303034?k=20&m=1153303034&s=612x612&w=0&h=_9tH8mA_d9HSlhFnEwN5c81M4-cu5ncNqbDazG6n4oI=);">
+    <div class="container-fluid ">
+        <div class="row bg-info">
+            <div class="col-lg-2 bg-info d-none d-lg-block">
+                <a href="" class="navbar-brand w-80 h-80 m-0 p-0 d-flex align-items-center justify-content-center">
+                    <img src="{% static 'image/logoshop.jpg' %}" class="rounded-circle" width="60" height="60"  >
+                    <h1 class="m-2 display-6 text-dark">SHOP</h1>
+                </a>
+            </div>
+            <div class="col-lg-10 bg-info">
+               
+                <nav class="navbar navbar-expand-lg bg-info navbar-light p-0">
+                    <a href="" class="navbar-brand d-block d-lg-none ">
+                        
+                        <h1 class="m-0 display-4 text-primary ">SHOP</h1>
+                    </a> 
+                  
+                    
+                        <div class=" navbar-nav mr-auto py-0 ">
+                          
+                            <a href="/" class="nav-item nav-link active">Home</a>
+                            <a href="" class="nav-item nav-link text-danger">About</a>
+                            <a href="{% url 'show_user_details' %}" class="nav-item nav-link">show user</a>
+                            <a href="{% url 'load_add_category' %}" class="nav-item nav-link">add catogory</a>
+                            
+                            <a href="{% url 'load_admin_add_product' %}" class="nav-item nav-link" >add_product</a>
+                            <a href="{% url 'admin_show_product' %}" class="nav-item nav-link" >show_product</a>
+                                
+                           
+                            <a href="{% url 'logout' %}" class="nav-item nav-link">logout</a>
+                            <form class="form-inline float-right">
+                                <input class="form-control mr-sm-2" type="text" placeholder="search products">
+                                <button class="btn btn-success" type="submit">Search</button>
+                                </form>
+                            </div>
+                 
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+    <section>
+        <div class="container">
+            <div  class="row justify-content-center align-items-center">
+                <div class="a col-md-12  my-5"  style="background-color:rgba(136, 184, 82, 0.808); box-shadow: 3px 10px 18px blue;">
+    <div class="container-fluid">
+<div class="container bg-dark my-3 text-light" >
+    <h1>SHOW USER DETAILS</h1>
+    <table class="table table-stribed bg-dark text-light " >
+        <thead>
+            <tr>
+                <th> Name</th>
+                <th>Address</th>
+                <th>email</th>
+                <th>username</th>
+                <th>gender</th>
+                <th>photo</th>
+                <th>Phone</th>
+                <th>pincode</th>
+                <th>remove<th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in user %}
+            <tr>
+                <td>{{ u.user.first_name }} {{ u.user.last_name }}</td>
+                <td>{{ u.user_address }}</td>
+                <td>{{ u.user.email }}</td>
+                <td>{{ u.user.username }}</td>
+                <td>{{ u.user_gender }}</td>
+                {% if u.user_image == '/static/image/defaultimg.png' %}
+                <td>
+                    <img src="{% static 'image/defaultimg.png' %}" class="w-25">
+                </td>
+                {% else %}
+                <td>
+                    <img src="{{ u.user_image.url }}" class="w-25">
+                </td>
+               
+
+                {% endif %}
+                <td>{{ u.phone }}</td>
+                <td>{{ u.pincode }}</td>
+
+                <td>
+                    <a  class="fas fa-edit text-dark" role="button" href="{% url 'delete_user' u.id %}">remove</a> 
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button class="btn bg-warning float-right"><a href="{% url 'admin_show_product' %}"  style="margin-left: 10%;">back</a></button>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+

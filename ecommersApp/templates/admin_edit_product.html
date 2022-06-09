@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">               
+        <a href="" class="btn btn-dark my-3 btn-sm" role="button">Go Gallery</a>
+
+        <div class="card">
+
+
+<form class="form" action="{% url 'admin_edit_product' umember.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+<label class="text-light"> Name:</label>
+<input type="text" name="name" class="form-control mt-3 " value="{{ umember.name }}">
+<label class="text-light">price:</label>
+<input type="text" name="price" class="form-control mt-3 " value="{{ umember.price }}">
+<label class="text-light">discription:</label>
+<input type="text" name="des" class="form-control mt-3 " value="{{ umember.discription }}">
+<label class="text-light">Image:</label>
+<p>
+    {% if umember.product_image == '/static/image/defaultimg.png' %}
+        <td>
+            <img src="{% static 'image/defaultimg.png' %}" class="w-25">
+        </td>
+        {% else %}
+        <td>
+            <img src="{{ umember.product_image.url }}" class="w-25">
+        </td>
+        {% endif %}
+</p>
+<input type="file" name="file" class="form-control mt-3" accept="product_image/*" >
+<button type="submit" class="btn btn-success rounded-pill w-30 mt-3 w-40">SAVE</button>
+</form><br>
+
+</form>
+</div>
+</div>
+</div>
+{% endblock %}

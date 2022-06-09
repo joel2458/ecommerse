@@ -1,0 +1,47 @@
+
+<!-- {% extends 'base.html' %}  
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col">
+            <a href="javascript:history.go(-1);" class="btn btn-dark my-3 btn-sm" role="button">Go Gallery</a>
+             <div style="height: 90wh;">
+                 <img style="max-width: 25%; max-height:25%;" 
+                 src="{{ context.product.product_image.url }}"
+                 alt="Cute puppy">
+                 <p>
+                     {{ context.product.description }}
+                 </p>
+             </div>
+            
+         </div>
+         
+    </div>
+    <div class="row">
+        <a href="{% url 'addimg'  %}" class="btn btn-outline-dark btn-sm m-1" role="button">Vi</a>
+
+        {% for i in mull %}
+        <div class="col-md-3">
+            <a href="">
+         <div class="card">
+             <img class="image-sty w-75"
+             src="{{ i.multimage.url }}"
+             alt="multimage">
+             <div class="card-body">
+                 <p>
+                 {{ ctc.product.price }}
+                 </p>
+             </div>
+         </div>
+             </a>
+         </div>
+        {% empty %}
+        <h2>No Photos</h2>
+        {% endfor %}
+    </div>
+</div>
+
+
+< {% endblock %} -->

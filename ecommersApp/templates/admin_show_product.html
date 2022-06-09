@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.9);
+  transition: 0.8s;
+  margin-top: 10px;
+  
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+}
+    </style>
+    <body  style="background-image: url(https://media.istockphoto.com/photos/blank-screen-white-cellphone-and-shopping-carts-on-pastel-pink-and-picture-id1153303034?k=20&m=1153303034&s=612x612&w=0&h=_9tH8mA_d9HSlhFnEwN5c81M4-cu5ncNqbDazG6n4oI=); ">
+<section>
+   
+      
+
+
+    
+        <div class="row">
+            <div class="col-md-3 ">
+                <div class="card bg-info text-light">
+                    <div class="card-header">
+                      <b>Categories</b>
+                    </div>
+                    <ul class="list-group list-group-flush ">
+                      <li class="list-group-item">
+                          <a href="{% url 'admin_show_product' %}">
+                              All
+                          </a>
+                        </li>
+
+                      {% for c in catgrs %}
+                      <li class="list-group-item">
+                        <a href="{% url 'admin_show_product' %}?category={{ c.category_name }}">
+                            {{ c.category_name }}
+                        </a>
+                      </li>
+                      {% endfor %}
+
+                    
+
+                      <li class="list-group-item">
+                          <a href="{% url 'load_mul' %}" class="btn btn-block btn-dark btn-sm m-1" role="button">
+                              Add Photos
+                          </a>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+
+                    {% for i in imgs %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="ab images-sty"
+                             src="{{ i.product_image.url }}"
+                              alt="Bag image">
+                            <div class="card-body">
+                              <p class="card-text">
+                                  name:{{ i.name }}<br>
+                                  Category:{{ i.category.category_name }}
+                                  
+                              </p>
+                              <p class="card-text">
+                                price:{{ i.price }}
+                            </p>
+                            </div>
+
+                            
+                            <a href="{% url 'showimage' i.id %}" class="btn btn-outline-dark btn-sm m-1" role="button">View</a>
+                            
+                           
+                            <a href="{% url 'admin_delete_product' i.id %}" class="btn btn-outline-danger btn-sm m-1" role="button">delete product</a>
+                            <a href="{% url 'load_admin_edit_product' i.id %}" class="btn btn-outline-danger btn-sm m-1" role="button">edit product</a>
+                          </div>
+                    </div>
+                    {% empty %}
+                    <h3>No photos</h3>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    
+</div>
+</div>
+</div>
+
+</section>
+
+<style>
+    .ab{
+        width:300px;
+        height: 300px;
+    }
+    </style>
+    </body>
+{% endblock %}
